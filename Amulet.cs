@@ -11,9 +11,12 @@ namespace Disaheim
         public string Design
         { get; set; }
         public Level Quality { get; set; } = Level.medium;
-        
+        public static double LowQualityValue = 12.5;
+        public static double MediumQualityValue = 20.0;
+        public static double HighQualityValue = 27.5;
 
-    public Amulet(string itemId)
+
+        public Amulet(string itemId)
         {
             ItemId = itemId;
         }
@@ -33,6 +36,20 @@ namespace Disaheim
         {
             return $"ItemId: {ItemId}, Quality: {Quality}, Design: {Design}";
 
+        }
+        public override double GetValue()
+        {
+            switch (Quality)
+            {
+                case Level.low:
+                    return LowQualityValue;
+                case Level.medium:
+                    return MediumQualityValue;
+                case Level.high:
+                    return HighQualityValue;
+                default:
+                    return 0.0;
+            }
         }
     }
 }

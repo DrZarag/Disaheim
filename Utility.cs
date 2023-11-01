@@ -22,6 +22,7 @@ namespace Disaheim
         }
         public double GetValueOfAmulet(Amulet amulet)
         {
+            double price = 0;
             switch (amulet.Quality)
             {
                 case Level.low:
@@ -33,14 +34,13 @@ namespace Disaheim
                 case Level.high:
                     return 27.5;
                     break;
-                default: return 20.0;
-                    break;
             }
+            return price;
         }
         public double GetValueOfCourse(Course course) 
         {
-            int value = course.DurationInMinutes / 60;
-            int rest = course.DurationInMinutes % 60;
+            double value = course.DurationInMinutes / 60;
+            double rest = course.DurationInMinutes % 60;
             
             if (rest > 0 )
             {

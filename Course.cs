@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Disaheim
 {
-    public class Course
+    public class Course : IValuable
     {
         public string Name;
-        public int DurationInMinutes;
+        public double DurationInMinutes;
 
         public Course(string name)
         { 
@@ -18,12 +18,18 @@ namespace Disaheim
         }
         public Course(string name, int durationInMinutes) 
         {
-            this.Name = name;
-            this.DurationInMinutes = durationInMinutes;
+            Name = name;
+            DurationInMinutes = durationInMinutes;
         }
+        public static double CourseHourValue = 875;
         public override string ToString()
         {
-            return $"Name: {Name}, Duration in Minutes: {DurationInMinutes}";
+            return $"Name: {Name}, Duration in Minutes: {DurationInMinutes}, Value: {GetValue()}";
+        }
+        public double GetValue()
+        {
+            int hours = (int)Math.Round(DurationInMinutes / 60);
+            return CourseHourValue * hours;
         }
 
     }
