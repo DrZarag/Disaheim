@@ -12,6 +12,10 @@ namespace Disaheim
     {
         public string Title;
         public double Price;
+        public Book()
+        {
+             
+        }
 
         public Book (string itemId)
         {
@@ -36,5 +40,10 @@ namespace Disaheim
         {
             return Price;
         }
+        public string ToStringTxtFormat()
+        {
+            return $"BOOK;{ItemId};{Title};{Price}";
+        }
+        
     }
 }

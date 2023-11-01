@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +15,10 @@ namespace Disaheim
         public static double LowQualityValue = 12.5;
         public static double MediumQualityValue = 20.0;
         public static double HighQualityValue = 27.5;
+        public Amulet()
+        {
+            
+        }
 
 
         public Amulet(string itemId)

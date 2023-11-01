@@ -21,4 +21,5 @@ namespace Disaheim
         }
         public abstract double GetValue();
     }
+
 }
