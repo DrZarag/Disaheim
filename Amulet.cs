@@ -17,7 +17,7 @@ namespace Disaheim
         public static double HighQualityValue = 27.5;
         public Amulet()
         {
-            
+
         }
 
 
@@ -39,8 +39,7 @@ namespace Disaheim
 
         public override string ToString()
         {
-            return $"ItemId: {ItemId}, Quality: {Quality}, Design: {Design}";
-
+            return $"Amulet;{ItemId};{Design};{Quality}";
         }
         public override double GetValue()
         {
@@ -58,4 +57,3 @@ namespace Disaheim
         }
     }
 }
-

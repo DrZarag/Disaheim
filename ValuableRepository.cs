@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace Disaheim
+﻿namespace Disaheim
 {
     public class ValuableRepository : IPersistable
     {
@@ -61,7 +52,8 @@ namespace Disaheim
             {
                 foreach (var valuable in valuables)
                 {
-                    sw.WriteLine($"{valuable.GetType().Name};{valuable.ToString}");
+                    string s = $"{valuable.GetType().Name};{valuable.ToString()}";
+                    sw.WriteLine($"{valuable.GetType().Name};{valuable.ToString()}");
                 }
             }
         }
@@ -79,7 +71,7 @@ namespace Disaheim
             {
                 foreach (var valuable in valuables)
                 {
-                    sw.WriteLine($"{valuable.GetType().Name};{valuable.ToString}");
+                    sw.WriteLine($"{valuable.GetType().Name};{valuable.ToString()}");
                 }
             }
         }
@@ -90,7 +82,7 @@ namespace Disaheim
             using (StreamReader sr = new StreamReader(fileName))
             {
                 List<string> values = new List<string>();
-                string aa = sr.Read();
+
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
@@ -133,21 +125,30 @@ namespace Disaheim
         }
         private IValuable CreateValuableObject(string type, string[] properties)
         {
-            if (type == "Book" && properties.Length == 3)
+            if (type == "Book" && properties.Length == 4)
             {
                 return new Book
                 {
-                    ItemId = properties[0],
-                    Title = properties[1],
-                    Price = double.TryParse(properties[2], out double price) ? price : 0
+                    ItemId = properties[1],
+                    Title = properties[2],
+                    Price = double.TryParse(properties[3], out double price) ? price : 0
                 };
             }
-            else if (type == "Amulet" && properties.Length == 2)
+            else if (type == "Amulet" && properties.Length == 4)
             {
                 return new Amulet
                 {
-                    Design = properties[0],
-                    Quality = Enum.TryParse<Level>(properties[1], true, out Level quality) ? quality : Level.medium
+                    ItemId = properties[1],
+                    Design = properties[2],
+                    Quality = Enum.TryParse<Level>(properties[3], true, out Level quality) ? quality : Level.medium
+                };
+            }
+            else if (type == "Course" && properties.Length == 3)
+            {
+                return new Course
+                {
+                    Name = properties[1],
+                    DurationInMinutes = double.TryParse(properties[2], out double duration) ? duration : 0
                 };
             }
             // Add other types as needed
